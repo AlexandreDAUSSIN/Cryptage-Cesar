@@ -1,0 +1,51 @@
+#BlueJ class context
+comment0.target=Cipher
+comment0.text=\n\ Un\ chiffreur/d\u00E9chiffreur\ de\ messages.\n\n\ Les\ algorithmes\ utilis\u00E9s\ sont\ les\ suivants\ \:\n\ <ul>\n\ <li>\ pour\ le\ chiffrage\ \:\n\ <ol>\n\ \ \ \ \ <li>\ le\ message\ est\ transform\u00E9\ une\ premi\u00E8re\ fois\ globalement\ par\n\ \ \ \ \ \ \ \ \ un\ encodeur\ circulaire\ avec\ un\ d\u00E9calage\ al\u00E9atoire\ \u00E0\ droite\ ;\n\ \ \ \ \ </li>\n\ \ \ \ \ <li>\ le\ message\ transform\u00E9\ est\ modifi\u00E9\ une\ nouvelle\ fois\ mais\ mot\n\ \ \ \ \ \ \ \ \ \u00E0\ mot,\ \u00E0\ l'aide\ d'un\ encodeur\ circulaire\ \u00E0\ droite\ dont\ le\ d\u00E9calage\n\ \ \ \ \ \ \ \ \ prend\ les\ longueurs\ des\ mots\ successivement\ rencontr\u00E9s.\n\ \ \ \ \ </li>\n\ </ol>\n\ </li>\n\n\ <li>\ pour\ le\ d\u00E9chiffrage\ \:\n\ <ol>\n\ \ \ \ \ <li>\ le\ message\ est\ travaill\u00E9\ une\ premi\u00E8re\ fois\ \u00E0\ l'aide\ d'un\ encodeur\n\ \ \ \ \ \ \ \ \ circulaire\ \u00E0\ gauche\ dont\ le\ d\u00E9calage\ prend\ en\ compte\ la\ longueur\ des\n\ \ \ \ \ \ \ \ \ mots\ successifs\ ;\n\ \ \ \ \ </li>\n\ \ \ \ \ <li>\ pour\ annuler\ l'utilisation\ lors\ du\ chiffrage\ du\ premier\ encodeur\n\ \ \ \ \ \ \ \ \ circulaire\ on\ retrouve\ le\ d\u00E9calage\ al\u00E9atoire\ utilis\u00E9,\ en\ s'appuyant\n\ \ \ \ \ \ \ \ \ sur\ le\ fait\ que\ la\ lettre\ la\ plus\ fr\u00E9quente\ dans\ un\ texte\ fran\u00E7ais\n\ \ \ \ \ \ \ \ \ (ou\ anglais)\ est\ le\ 'e'.\n\ \ \ \ \ </li>\n\ </ol>\n\ </li>\n\ </ul>\n\ @inv\ <pre>\n\ \ \ \ \ getClearText()\ \!\=\ null\n\ \ \ \ \ getCipherText()\ \!\=\ null\n\ \ \ \ \ getClearText()\ est\ le\ d\u00E9chiffr\u00E9\ de\ getCipherText()\ </pre>\n
+comment1.params=
+comment1.target=Cipher()
+comment1.text=\n\ Un\ chiffreur\ dont\ les\ messages\ getClearText()\ et\ getCipherText()\n\ \ retournent\ la\ cha\u00EEne\ vide.\n\ @post\ <pre>\n\ \ \ \ \ getClearText().equals("")\n\ \ \ \ \ getCipherText().equals("")\ </pre>\n
+comment10.params=text
+comment10.target=java.lang.String\ encodageCesar(java.lang.String)
+comment10.text=\n\ Methode\ qui\ encode\ un\ texte\ de\ la\ facon\ de\ Cesar\ et\ qui\ modifie\ le\ message\ courant\ chiffree\n\ Ajoutee\ par\ Izana\n
+comment11.params=text
+comment11.target=java.lang.String\ decodageCesar(java.lang.String)
+comment11.text=\n\ Methode\ qui\ decode\ un\ texte\ de\ la\ facon\ de\ Cesar\ et\ qui\ modifie\ le\ message\ courant\ en\ clair\n\ Ajoutee\ par\ Izana\n
+comment12.params=message
+comment12.target=java.lang.String\ encodageMot(java.lang.String)
+comment12.text=\n\ Retourne\ l'encodage\ du\ mot\ a\ mot\n\ Ajoutee\ par\ l'etudiante\ Izana\n
+comment13.params=message
+comment13.target=java.lang.String\ decodageMot(java.lang.String)
+comment13.text=\n\ Retourne\ le\ decodage\ du\ mot\ a\ mot\n\ Ajoutee\ par\ l'etudiante\ Izana\n
+comment14.params=word
+comment14.target=boolean\ isSeparator(java.lang.String)
+comment14.text=\n\ indique\ si\ le\ mot\ word\ correspond\ \u00E0\ un\ s\u00E9parateur.\n\ @pre\ <pre>\n\ \ \ \ \ word\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ result\ <\=\=>\n\ \ \ \ \ \ \ \ \ word.length()\ \=\=\ 1\n\ \ \ \ \ \ \ \ \ word.charAt(0)\ est\ dans\ SEPARATORS\ </pre>\n
+comment15.params=message\ type
+comment15.target=java.lang.String\ transformWords(java.lang.String,\ int)
+comment15.text=\n\ Encodage\ mot\ \u00E0\ mot\ de\ message\ avec\ un\ d\u00E9calage\ donn\u00E9\ par\ la\ longueur\n\ \ des\ mots\ (d\u00E9calage\ \u00E0\ droite\ si\ type\ \=\=\ ENCODE,\ d\u00E9calage\ \u00E0\ gauche\ si\n\ \ type\ \=\=\ DECODE).\n\ @pre\ <pre>\n\ \ \ \ \ message\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ type\ \=\=\ ENCODE\n\ \ \ \ \ \ \ \ \ \=\=>\ result\ est\ l'encodage\ de\ message\ mot\ \u00E0\ mot\n\ \ \ \ \ type\ \=\=\ DECODE\n\ \ \ \ \ \ \ \ \ \=\=>\ result\ est\ le\ d\u00E9codage\ de\ message\ mot\ \u00E0\ mot\ </pre>\n
+comment16.params=args
+comment16.target=void\ main(java.lang.String[])
+comment2.params=shift
+comment2.target=Cipher(int)
+comment2.text=\n\ Un\ chiffreur\ dont\ les\ messages\ getClearText()\ et\ getCipherText()\n\ \ retournent\ la\ cha\u00EEne\ vide.\n\ \n\ @post\ <pre>\n\ \ \ \ \ getClearText().equals("")\n\ \ \ \ \ getCipherText().equals("")\ </pre>\n\ \ \ \ \ this.shiftAlea\ \=\=\ alea(1,\ number)\n
+comment3.params=
+comment3.target=java.lang.String\ getClearText()
+comment3.text=\n\ Le\ message\ courant\ en\ clair.\ Sa\ valeur\ correspond\ au\ message\ d\u00E9cod\u00E9\ de\n\ \ getCipherText().\n
+comment4.params=
+comment4.target=java.lang.String\ getCipherText()
+comment4.text=\n\ Le\ message\ courant\ chiffr\u00E9.\ Sa\ valeur\ correspond\ au\ message\ encod\u00E9\ de\n\ \ getClearText().\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\n\ Une\ repr\u00E9sentation\ sous\ forme\ de\ cha\u00EEne\ de\ cet\ encodeur.\n\ @post\n\ \ \ \ \ result.equals("Cipher[clear\:"\ +\ getClearText()\n\ \ \ \ \ \ \ \ \ +\ ";cipher\:"\ +\ getCipherText()\ +\ "]")\n
+comment6.params=text
+comment6.target=void\ setClearText(java.lang.String)
+comment6.text=\n\ Modification\ du\ message\ courant\ en\ clair.\n\ @pre\ <pre>\n\ \ \ \ \ text\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getClearText().equals(text)\ </pre>\n
+comment7.params=text
+comment7.target=void\ setCipherText(java.lang.String)
+comment7.text=\n\ Modification\ du\ message\ courant\ chiffr\u00E9.\n\ @pre\ <pre>\n\ \ \ \ \ text\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getCipherText().equals(text)\ </pre>\n
+comment8.params=a\ b
+comment8.target=int\ alea(int,\ int)
+comment8.text=\n\ Un\ nombre\ al\u00E9atoire\ compris\ entre\ a\ et\ b\ (au\ sens\ large).\n\ @pre\ <pre>\n\ \ \ \ \ 0\ <\ a\ <\=\ b\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ a\ <\=\ result\ <\=\ b\ </pre>\n
+comment9.params=number
+comment9.target=int\ transformShiftAlea(int)
+comment9.text=\n\ Modification\ du\ d\uFFFDcalage\ al\uFFFDatoire\ courant.\ \n\ @pre\ <pre>\n\ \ \ 0\ <\ number\ <\ SIZE_ALPHABET\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getShiftAlea\ \=\=\ alea(-number,\ number)\ </pre>\n
+numComments=17

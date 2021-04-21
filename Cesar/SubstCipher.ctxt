@@ -1,0 +1,49 @@
+#BlueJ class context
+comment0.target=SubstCipher
+comment0.text=\n\ Un\ encodeur\ selon\ le\ principe\ du\ d\u00E9calage\ circulaire\ (aussi\ appel\u00E9\ technique\n\ \ de\ "C\u00E9sar").\n\ La\ m\u00E9thode\ <code>getShiftedText</code>\ permet\ d'encoder\ un\ message\n\ \ (d\u00E9calage\ \u00E0\ droite)\ ou\ de\ le\ d\u00E9coder\ (d\u00E9calage\ \u00E0\ gauche)\ selon\ la\ valeur\n\ \ actuelle\ du\ d\u00E9calage.\n\ @inv\ <pre>\n\ \ \ \ \ -ALPHABET_SIZE\ <\ getShift()\ <\ ALPHABET_SIZE\n\ \ \ \ \ getLastShiftedText()\ \!\=\ null\ </pre>\n
+comment1.params=
+comment1.target=SubstCipher()
+comment1.text=\n\ Un\ encodeur\ de\ d\u00E9calage\ 0\ (i.e.\ l'identit\u00E9).\n\ @post\ <pre>\n\ \ \ \ \ getShift()\ \=\=\ 0\n\ \ \ \ \ getLastShiftedText().equals("")\ </pre>\n
+comment10.params=c
+comment10.target=char\ shiftChar(char)
+comment10.text=\n\ Le\ caract\u00E8re\ c\ d\u00E9cal\u00E9\ circulairement\ de\ shift\ positions\ dans\ l'alphabet.\n\ @pre\ <pre>\n\ \ \ \ \ isNonAccentedLetter(c)\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ currentShift\ >\=\ 0\n\ \ \ \ \ \ \ \ \ \=\=>\ result\ \=\=\ d\u00E9cal\u00E9\ vers\ la\ droite\ de\ c\n\ \ \ \ \ currentShift\ <\ 0\n\ \ \ \ \ \ \ \ \ \=\=>\ result\ \=\=\ d\u00E9cal\u00E9\ vers\ la\ gauche\ de\ c\ </pre>\n
+comment11.params=c
+comment11.target=boolean\ isNonAccentedLetter(char)
+comment11.text=\n\ Indique\ si\ c\ est\ une\ lettre\ minuscule\ ou\ majuscule\ non\ accentu\u00E9e.\n\ @post\ <pre>\n\ \ \ \ \ result\ <\=\=>\ c\ est\ une\ lettre\ non\ accentu\u00E9e\ </pre>\n
+comment12.params=text
+comment12.target=int\ guessShiftFrom(java.lang.String)
+comment12.text=\n\ Calcule\ un\ d\u00E9calage\ \u00E0\ partir\ du\ message\ donn\u00E9\ en\ param\u00E8tre\ selon\n\ \ l'algorithme\ qui\ suit.\n\ <ul>\n\ \ \ <li>compter\ l'occurrence\ de\ chaque\ lettre\ non\ accentu\u00E9e\ (minuscule\ ou\n\ \ \ \ \ \ \ majuscule)\ du\ message\ ;</li>\n\ \ \ <li>d\u00E9terminer\ un\ d\u00E9calage\ pour\ encoder\ MOST_FREQUENT_CHAR\ par\ la\n\ \ \ \ \ \ \ lettre\ apparaissant\ le\ plus\ souvent\ dans\ le\ message.</li>\n\ </ul>\n\ En\ cas\ d'\u00E9galit\u00E9\ de\ fr\u00E9quence\ de\ plusieurs\ lettres\ du\ message,\ la\ plus\n\ \ petite\ parmi\ ces\ lettres\ (pour\ l'ordre\ alphab\u00E9tique)\ est\ retourn\u00E9e.\n\ Pour\ un\ message\ chiffr\u00E9\ \u00E9gal\ \u00E0\ la\ cha\u00EEne\ vide,\ la\ valeur\ retourn\u00E9e\ est\ 0.\n\ @pre\ <pre>\n\ \ \ \ \ text\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ text.equals("")\ \=\=>\ result\ \=\=\ 0\n\ \ \ \ \ \!text.equals("")\n\ \ \ \ \ \ \ \ \ \=\=>\ Let\ f\ \:\:\ la\ lettre\ la\ plus\ fr\u00E9quente\ du\ message\n\ \ \ \ \ \ \ \ \ \ \ \ \ result\ \=\=\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((f\ -\ MOST_FREQUENT_CHAR)\ +\ ALPHABET_SIZE)\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %\ ALPHABET_SIZE\ </pre>\n
+comment13.params=text
+comment13.target=int\ guessShiftFromNonEmptyMessage(java.lang.String)
+comment13.text=\n\ Calcule\ un\ d\u00E9calage\ \u00E0\ partir\ du\ message\ (non\ vide)\ donn\u00E9\ en\ param\u00E8tre\n\ \ selon\ l'algorithme\ qui\ suit.\n\ <ul>\n\ \ \ <li>compter\ l'occurrence\ de\ chaque\ lettre\ non\ accentu\u00E9e\ (minuscule\ ou\n\ \ \ \ \ \ \ majuscule)\ du\ message\ ;</li>\n\ \ \ <li>d\u00E9terminer\ un\ d\u00E9calage\ pour\ encoder\ MOST_FREQUENT_CHAR\ par\ la\n\ \ \ \ \ \ \ lettre\ apparaissant\ le\ plus\ souvent\ dans\ le\ message.</li>\n\ </ul>\n\ En\ cas\ d'\u00E9galit\u00E9\ de\ fr\u00E9quence\ de\ plusieurs\ lettres\ du\ message,\ la\ plus\n\ \ petite\ parmi\ ces\ lettres\ (pour\ l'ordre\ alphab\u00E9tique)\ est\ retourn\u00E9e.\n\ @pre\ <pre>\n\ \ \ \ \ text\ \!\=\ null\ &&\ \!text.equals("")</pre>\n\ @post\ <pre>\n\ \ \ \ \ Let\ f\ \:\:\ la\ lettre\ la\ plus\ fr\u00E9quente\ du\ message\n\ \ \ \ \ result\ \=\=\ ((f\ -\ MOST_FREQUENT_CHAR)\ +\ ALPHABET_SIZE)\ %\ ALPHABET_SIZE\n\ </pre>\n
+comment14.params=s
+comment14.target=int[]\ countOccurences(java.lang.String)
+comment15.params=c
+comment15.target=boolean\ isMin(char)
+comment16.params=t
+comment16.target=int\ getIndexOfMax(int[])
+comment2.params=shift
+comment2.target=SubstCipher(int)
+comment2.text=\n\ Un\ encodeur\ de\ d\u00E9calage\ <code>shift</code>.\n\ @pre\ <pre>\n\ \ \ \ \ -ALPHABET_SIZE\ <\ shift\ <\ ALPHABET_SIZE\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getShift()\ \=\=\ shift\n\ \ \ \ \ getLastShiftedText().equals("")\ </pre>\n
+comment3.params=
+comment3.target=java.lang.String\ getLastShiftedText()
+comment3.text=\n\ Le\ dernier\ texte\ encod\u00E9\ par\ cet\ encodeur\ avec\ un\ d\u00E9calage\ de\ getShift().\n
+comment4.params=
+comment4.target=int\ getShift()
+comment4.text=\n\ Le\ d\u00E9calage\ courant\ de\ cet\ encodeur.\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\n\ Une\ repr\u00E9sentation\ sous\ forme\ de\ cha\u00EEne\ de\ cet\ encodeur.\n\ @post\n\ \ \ \ \ result.equals("SubstCipher[shift\:"\ +\ getShift()\ +\ "]")\n
+comment6.params=shift
+comment6.target=void\ setShift(int)
+comment6.text=\n\ Affecte\ un\ nouveau\ d\u00E9calage\ \u00E0\ l'encodeur.\n\ @pre\ <pre>\n\ \ \ \ \ -ALPHABET_SIZE\ <\ shift\ <\ ALPHABET_SIZE\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getShift()\ \=\=\ shift\n\ \ \ \ \ getLastShiftedText().equals("")\ </pre>\n
+comment7.params=text
+comment7.target=void\ buildShiftedTextFor(java.lang.String)
+comment7.text=\n\ Construit\ une\ cha\u00EEne\ \u00E0\ partir\ de\ celle\ fournie\ en\ param\u00E8tre\ en\ d\u00E9calant\n\ \ circulairement\ les\ caract\u00E8res\ alphab\u00E9tiques\ selon\ le\ d\u00E9calage\ donn\u00E9\ par\n\ \ <code>getShift()</code>.\n\ Le\ d\u00E9calage\ se\ fait\ \u00E0\ droite\ si\ <code>getShift()\ &geq;\ 0</code>,\ ou\n\ \ \u00E0\ gauche\ si\ <code>getShift()\ &lt;\ 0</code>.\n\ @pre\ <pre>\n\ \ \ \ \ text\ \!\=\ null\ </pre>\n\ @post\ <pre>\n\ \ \ \ \ getLastShiftedText()\ \!\=\ null\n\ \ \ \ \ getLastShiftedText().length()\ \=\=\ text.length()\n\ \ \ \ \ forall\ i\ in\ [0\ ..\ text.length()[\ \:\n\ \ \ \ \ \ \ \ \ Let\ ci\ \:\:\ text.charAt(i)\n\ \ \ \ \ \ \ \ \ \ \ \ \ xi\ \:\:\ getLastShiftedText().charAt(i)\n\ \ \ \ \ \ \ \ \ isNonAccentedLetter(ci)\ \=\=>\ xi\ \=\=\ ci\ d\u00E9cal\u00E9\ de\ getShift()\n\ \ \ \ \ \ \ \ \ \!isNonAccentedLetter(ci)\ \=\=>\ xi\ \=\=\ ci\ </pre>\n
+comment8.params=
+comment8.target=void\ ensurePositiveShift()
+comment8.text=\n\ Configure\ cet\ encodeur\ pour\ un\ encodage.\n\ @post\ <pre>\n\ \ \ \ \ getShift()\ \=\=\ +abs(old\ getShift())\n\ \ \ \ \ getLastShiftedText().equals("")\ </pre>\n
+comment9.params=
+comment9.target=void\ ensureNegativeShift()
+comment9.text=\n\ Configure\ cet\ encodeur\ pour\ un\ d\u00E9codage.\n\ @post\ <pre>\n\ \ \ \ \ getShift()\ \=\=\ -abs(old\ getShift())\n\ \ \ \ \ getLastShiftedText().equals("")\ </pre>\n
+numComments=17
